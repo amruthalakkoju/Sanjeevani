@@ -1,0 +1,6 @@
+{
+  "name": "Sanjeevani Super Speciality Hospital",
+  "description": "Premier NABH-accredited tertiary care hospital in India providing 24x7 emergency trauma services, OPD token tracking, specialist doctor appointments, live bed availability, Ayushman Bharat desk, and verified diagnostic lab reports.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
