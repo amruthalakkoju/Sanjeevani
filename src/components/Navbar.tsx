@@ -10,12 +10,14 @@ import {
   Bed, 
   Activity, 
   CreditCard,
-  ChevronDown
+  ChevronDown,
+  Bot
 } from 'lucide-react';
 
 interface NavbarProps {
   onOpenBooking: (doctorName?: string, department?: string) => void;
   onOpenLabReports: () => void;
+  onOpenChat?: () => void;
   activeSection: string;
   onNavigate: (sectionId: string) => void;
   language: 'en' | 'hi' | 'ta' | 'te';
@@ -25,6 +27,7 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({
   onOpenBooking,
   onOpenLabReports,
+  onOpenChat,
   activeSection,
   onNavigate,
   language,
@@ -74,13 +77,23 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
+            {onOpenChat && (
+              <button 
+                onClick={onOpenChat}
+                className="text-teal-300 hover:text-white flex items-center gap-1.5 font-medium transition-colors cursor-pointer bg-slate-800/80 px-2 py-0.5 rounded border border-slate-700/80"
+              >
+                <Bot className="w-3.5 h-3.5 text-teal-400" />
+                <span className="hidden sm:inline">Ask</span> AI Assistant
+              </button>
+            )}
+
             <button 
               onClick={onOpenLabReports}
               className="text-teal-300 hover:text-teal-100 flex items-center gap-1 font-medium transition-colors cursor-pointer"
             >
               <FileText className="w-3 h-3" />
-              <span>Lab Reports Portal</span>
+              <span>Lab Reports</span>
             </button>
 
             <span className="text-slate-700">|</span>

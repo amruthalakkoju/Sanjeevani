@@ -16,12 +16,14 @@ import { EmergencyTriageGuide } from './components/EmergencyTriageGuide';
 import { Footer } from './components/Footer';
 import { AppointmentBookingModal } from './components/AppointmentBookingModal';
 import { LabReportViewerModal } from './components/LabReportViewerModal';
+import { N8nChatWidget } from './components/N8nChatWidget';
 
 export default function App() {
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const [preselectedDoctor, setPreselectedDoctor] = useState<string | undefined>(undefined);
   const [preselectedDepartment, setPreselectedDepartment] = useState<string | undefined>(undefined);
   const [labReportsModalOpen, setLabReportsModalOpen] = useState(false);
+  const [chatOpen, setChatOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
   const [language, setLanguage] = useState<'en' | 'hi' | 'ta' | 'te'>('en');
 
@@ -55,6 +57,7 @@ export default function App() {
       <Navbar
         onOpenBooking={() => handleOpenBooking()}
         onOpenLabReports={() => setLabReportsModalOpen(true)}
+        onOpenChat={() => setChatOpen(true)}
         activeSection={activeSection}
         onNavigate={handleNavigateToSection}
         language={language}
@@ -111,6 +114,15 @@ export default function App() {
       <LabReportViewerModal
         isOpen={labReportsModalOpen}
         onClose={() => setLabReportsModalOpen(false)}
+      />
+
+      {/* Floating 24x7 n8n AI Chatbot */}
+      <N8nChatWidget
+        webhookUrl="https://amruthalakkoju.app.n8n.cloud/webhook/0390b0c0-fa06-4e26-a8d6-f83a8cc03b59/chat"
+        isOpen={chatOpen}
+        onToggleOpen={setChatOpen}
+        onOpenBooking={handleOpenBooking}
+        onOpenLabReports={() => setLabReportsModalOpen(true)}
       />
     </div>
   );
